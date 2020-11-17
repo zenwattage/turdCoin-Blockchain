@@ -9,7 +9,7 @@
 const SHA256 = require('crypto-js/sha256');
 
 /**
- * @description A block
+ * @description Block constructor
  */
 class Block {
     constructor(index, timestamp, data, previousHash = '') {
