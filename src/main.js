@@ -23,3 +23,8 @@ console.log("\nStarting the miner...");
 turdCoin.mindPendingTransactions(myWalletAddress);
 
 console.log("\nBalance of your wallet is : ", turdCoin.getBalanceOfAddress(myWalletAddress));
+
+//tamper with chain
+turdCoin.chain[1].transactions[0].amount = 1; //returns false
+
+console.log('Is chain valid?', turdCoin.isChainValid());

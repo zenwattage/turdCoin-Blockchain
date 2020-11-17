@@ -49,14 +49,23 @@ class Block {
         this.nonce = 0;
     }
 
+
     /**
-     * @description Run properties of the block through a SHA256 hash function and return hash
-     * 
+     * Returns the SHA256 of this block (by processing all the data stored
+     * inside this block)
+     *
+     * @returns {string}
      */
     calculateHash() {
         return SHA256(this.previousHash + this.timestamp + JSON.stringify(this.data) + this.nonce).toString();
     }
 
+    /**
+    * Starts the mining process on the block. It changes the 'nonce' until the hash
+    * of the block starts with enough zeros (= difficulty)
+    *
+    * @param {number} difficulty
+    */
     mineBlock(difficulty) {
         while (this.hash.substring(0, difficulty) !== Array(difficulty + 1).join("0")) {
             this.nonce++;
@@ -66,6 +75,13 @@ class Block {
         console.log("BLOCK MINED: " + this.hash);
     }
 
+
+    /**
+    * Validates all the transactions inside this block (signature + hash) and
+    * returns true if everything checks out. False if the block is invalid.
+    *
+    * @returns {boolean}
+    */
     hasValidTransactions() {
         for (const tx of this.transactions) {
             if (!tx.isValid()) {
@@ -98,6 +114,14 @@ class Blockchain {
 
     }
 
+
+    /**
+    * Takes all the pending transactions, puts them in a Block and starts the
+    * mining process. It also adds a transaction to send the mining reward to
+    * the given address.
+    *
+    * @param {string} miningRewardAddress
+    */
     mindPendingTransactions(miningRewardAddress) {
         /**
          * Note:
@@ -119,6 +143,14 @@ class Blockchain {
         this.pendingTransactions = [];
     }
 
+
+    /**
+    * Add a new transaction to the list of pending transactions (to be added
+    * next time the mining process starts). This verifies that the given
+    * transaction is properly signed.
+    *
+    * @param {Transaction} transaction
+    */
     addTransaction(transaction) {
         //are from and to add filled
         if (!transaction.fromAddress || !transaction.toAddress) {
@@ -146,6 +178,8 @@ class Blockchain {
         }
         return balance;
     }
+
+
 
     isChainValid() {
         for (let i = 1; i < this.chain.length; i++) {
