@@ -1,11 +1,3 @@
-/**
- * @description Small JavaScript Blockchain
- * @author Scott Hansford
- * @version 1.0
- * @version 11/16/2020
- */
-
-
 const SHA256 = require('crypto-js/sha256');
 
 
@@ -129,38 +121,5 @@ class Blockchain {
 }
 
 
-
-let turdCoin = new Blockchain();
-
-// console.log("Mining block 1....");
-// turdCoin.addBlock(new Block(1, "10/07/2020", { amount: 4 }));
-
-// console.log("Mining block 2....");
-// turdCoin.addBlock(new Block(2, "11/01/2020", { amount: 12 }));
-
-// console.log('Is blockchain valid? ' + turdCoin.isChainValid()); //true
-
-// //console.log(JSON.stringify(turdCoin, null, 4));
-
-
-// //trying to change block 2
-// //give ourselves 100 coins
-// turdCoin.chain[1].data = { amount: 100 };
-// turdCoin.chain[1].hash = turdCoin.chain[1].calculateHash();
-
-// console.log('Is blockchain valid? ' + turdCoin.isChainValid()); //false
-
-turdCoin.createTransaction(new Transaction('address1', 'address2', 100));
-turdCoin.createTransaction(new Transaction('address2', 'address1', 60));
-
-
-console.log("\nStarting the miner...");
-turdCoin.mindPendingTransactions("zenwattages address");
-
-console.log("\nBalance of your wallet is : ", turdCoin.getBalanceOfAddress("zenwattages address"));
-
-
-console.log("\nStarting the miner...");
-turdCoin.mindPendingTransactions("zenwattages address");
-
-console.log("\nBalance of your wallet is : ", turdCoin.getBalanceOfAddress("zenwattages address"));
+module.exports.Blockchain = Blockchain;
+module.exports.Transaction = Transaction;
