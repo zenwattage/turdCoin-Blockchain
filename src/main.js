@@ -20,6 +20,6 @@ tx1.signTransaction(myKey);
 turdCoin.addTransaction(tx1);
 
 console.log("\nStarting the miner...");
-turdCoin.mindPendingTransactions("zenwattages address");
+turdCoin.mindPendingTransactions(myWalletAddress);
 
-console.log("\nBalance of your wallet is : ", turdCoin.getBalanceOfAddress("zenwattages address"));
+console.log("\nBalance of your wallet is : ", turdCoin.getBalanceOfAddress(myWalletAddress));
