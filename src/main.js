@@ -1,5 +1,5 @@
 /**
- * @description Small JavaScript Blockchain
+ * @description Small JavaScript Blockchain and Cryptocurrency
  * @author Scott Hansford
  * @version 1.0
  * @version 11/16/2020
