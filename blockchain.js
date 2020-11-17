@@ -22,7 +22,7 @@ class Block {
     }
 
     /**
-     * @description Run properties of the block through a SHA256 hash function * and return hash
+     * @description Run properties of the block through a SHA256 hash function and return hash
      * 
      */
     calculateHash() {
@@ -59,13 +59,6 @@ class Blockchain {
         return this.chain[this.chain.length - 1];
 
     }
-
-    // addBlock(newBlock) {
-    //     newBlock.previousHash = this.getLatestBlock().hash;
-    //     //newBlock.hash = newBlock.calculateHash();
-    //     newBlock.mineBlock(this.difficulty);
-    //     this.chain.push(newBlock);
-    // }
 
     mindPendingTransactions(miningRewardAddress) {
         /**
